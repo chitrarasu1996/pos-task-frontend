@@ -17,7 +17,7 @@ navigate("/login")
 <>
 <div className='pt-2 mb-2 hole-nav d-flex justify-content-between'>
 <div className='d-flex justify-content-between align-items-center' >  
-    <div className='ps-3'>Shop</div>
+    <div className='ps-3'><h5>shop</h5></div>
     <div className='d-flex gap-2' style={{backgroundColor:"white",marginLeft:"230px"}}>
 <div  style={{width:"30vw",marginLeft:"50px"}}><Input style={{border:"none"}} color='black' placeholder='enter products'/></div>
 <div className='cursor-pointer'><CiSearch size={18}/></div>
