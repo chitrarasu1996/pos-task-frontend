@@ -49,7 +49,7 @@ setCart(oldCart)
   <div className="card-body" >
     <p className="card-text">Productname :{product.productName}</p>
  <p className="card-text">Price :{product.price}</p>
- <p className="card-text">Price :{product.price}</p>
+
  <div className="mt-auto mb-auto">
             <button onClick={()=>addProductsToCart(product)} style={{ color: "white" }} className='btn button-color'>
               Add to cart
