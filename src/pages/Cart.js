@@ -119,7 +119,6 @@ const Cart = () => {
             const productIdss = cart.map((product) => product._id);
             setProductsId(productIdss);
           
-            console.log(productIdss,token)
             if (productIdss.length> 0) {
 
                 const res = await ordersProducts(productIdss, token, totalPrice)

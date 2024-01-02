@@ -30,7 +30,7 @@ if(data){
     <Layout>
   <div className='hole-bills'>
     <div className='details-tables pt-2 ps-0 pb-2'>
-{allOrders&&allOrders.map((bills,i)=>(
+{allOrders.length>0?allOrders.map((bills,i)=>(
     <div>
     <div>
    <table class="table">
@@ -63,7 +63,7 @@ if(data){
 </div>
 </div>
 
-))}
+)):<div><h4>There is no bill</h4></div>}
   </div>
   </div>
         </Layout>
