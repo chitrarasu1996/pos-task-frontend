@@ -1,38 +1,114 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.form-wrapper{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+overflow-y: auto;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
 }
+.background-wrapper{
+border:  1px solid #DADCE0 !important;
+background-color:#FDFDFD;
+border-radius: 6px;
+padding: 10px;
+box-shadow: 0 0 10px rgba(255, 255, 255, 0.2)
+}
+.form-control:focus {
+  box-shadow: none !important;
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+}
+.button-color{
+  background-color: #484E55!important;
+
+}
+.button-color:hover{
+ background-color: #FDFDFD !important;
+ color: black !important;
+}
+.title{
+  font-size: 600;
+  font-weight: 200;
+  color: black !important;;
+  padding: 5px;
+}
+.form-container-wrap{
+  background-color: #FFFFFF ;
+  border-radius: 10px;
+  line-height: 500px !important;
+}
+.FormGroup:focus{
+  outline: none !important;
+  border: none !important;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  .hole-sidebar{
+    height: 90vh;
+    overflow: auto;
+    background-color:white;
+  }
+
+.hole-productsLists{
+  height: 89vh;
+  overflow-y:auto ;
+}
+.hole-cart{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 90vh;
+  overflow: auto;
+}
+.hole-products{
+  display: flex;
+  flex-wrap: wrap;
+gap:10px;
+
+}
+
+ .App{
+  background-color: #E0E0E1;
+  overflow: hidden;
+  height: 100vh;
+ }
+ ul{
+  list-style: none !important;
+  list-style-type: none !important;
+ }
+
+
+ .single-cart-product{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid white;
+background-color: white;
+  padding: 30px 0px;
+
+ }
+
+ .total-price{
+border: 1px solid white;
+height: 70vh;
+overflow: auto;
+ }
+ .hole-bills{
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  overflow-y: auto;
+ }
+
+ .details-tables{
+  width: 70vw;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+  padding-left: 20px;
+  border: 1px solid white;
+  overflow: auto;
+ }
 
-.App-link {
-  color: #61dafb;
-}
+ .single-product{
+  display: flex;
+  flex-direction: column;
+border: 1px solid white;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+ }
