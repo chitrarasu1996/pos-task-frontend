@@ -19,7 +19,7 @@ export const mycontext=createContext()
 function App() {
   const [userName,setUserName]=useState('')
 const [allProductfromStrore,setAllFromStroe]=useState([])
-const [cart,setCart]=useState([]);
+const [cart,setCart]=useState(JSON.parse(localStorage.getItem("cart")));
 const [totalPrice,setTotalPrice]=useState(0)
 const [bundleProducts,setBundleProducts]=useState([])
   return (

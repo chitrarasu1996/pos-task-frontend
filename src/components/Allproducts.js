@@ -20,22 +20,17 @@ const {setCart,cart,setAllFromStroe}=useContext(mycontext)
     }
    
   }
-  const addProductsToCart=(Selectedproduct)=>{
+  
+const addProductsToCart=(Selectedproduct)=>{
 const oldCart=[...cart]
 const existingProduct=oldCart.findIndex((cartProduct)=>cartProduct._id===Selectedproduct._id)
 
 if(existingProduct===-1){
-
-  const quantity={...Selectedproduct,quantity:1}
+const quantity={...Selectedproduct,quantity:1}
 oldCart.push(quantity)
 setCart(oldCart)
-
+localStorage.setItem("cart", JSON.stringify(oldCart))
 }
-
-  
-
-
-
 
   }
 

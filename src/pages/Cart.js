@@ -56,7 +56,7 @@ const Cart = () => {
             const changeQuantityAndPrice = newCart.map((product, i) => {
                 if (i === index) {
                     const { price, quantity } = product
-                    return { ...product, price: price + filterdPrice.price, quantity: quantity + 1 }
+                    return { ...product, price: price + filterdPrice.price  , quantity: quantity + 1 }
                 }
                 return product
             })
@@ -81,7 +81,6 @@ const Cart = () => {
         }
 
         if (offer.details.discountAmount) {
-
             const addDiscountAmt = newCart.map((cartProduct, i) => {
                 if (cartProduct._id === product._id) {
                     const { price } = cartProduct
