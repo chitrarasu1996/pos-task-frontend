@@ -8,6 +8,9 @@ const {setCart,cart,setAllFromStroe}=useContext(mycontext)
   useEffect(()=>{
     gettingAllProducts()
   },[])
+  useContext(()=>{
+    gettingAllProducts()
+  },[cart])
   const [allProducts,setAllProducts]=useState([])
   const gettingAllProducts=async()=>{
     try {
@@ -20,7 +23,7 @@ const {setCart,cart,setAllFromStroe}=useContext(mycontext)
     }
    
   }
-  
+
 const addProductsToCart=(Selectedproduct)=>{
 const oldCart=[...cart]
 const existingProduct=oldCart.findIndex((cartProduct)=>cartProduct._id===Selectedproduct._id)

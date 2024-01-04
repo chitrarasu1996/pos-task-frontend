@@ -17,11 +17,13 @@ import BundleProducts from './pages/BundleProducts';
 export const mycontext=createContext()
 
 function App() {
-  const [userName,setUserName]=useState('')
+
+const [userName,setUserName]=useState('')
 const [allProductfromStrore,setAllFromStroe]=useState([])
 const [cart,setCart]=useState(JSON.parse(localStorage.getItem("cart")));
 const [totalPrice,setTotalPrice]=useState(0)
 const [bundleProducts,setBundleProducts]=useState([])
+
   return (
     <div className="App">
       <mycontext.Provider value={{userName,setUserName,cart,setCart,totalPrice,setTotalPrice,allProductfromStrore,setAllFromStroe,bundleProducts,setBundleProducts}}>

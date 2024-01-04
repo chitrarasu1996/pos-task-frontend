@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Layout from '../components/Layout'
 import { mycontext } from '../App'
-import { getAllOffers, ordersProducts } from '../service/api'
+import { getAllOffers, getAllProducts, ordersProducts } from '../service/api'
 import { useNavigate } from 'react-router-dom'
 
 
@@ -9,8 +9,9 @@ import { useNavigate } from 'react-router-dom'
 const Cart = () => {
 
     const navigate = useNavigate()
+const [selectedProduct,setSelectedProduct]=useState([]);
 
-    const { cart, setCart, bundleProducts, setBundleProducts, totalPrice, setTotalPrice, allProductfromStrore } = useContext(mycontext)
+    const { cart, setCart, bundleProducts, setAllFromStroe,setBundleProducts, totalPrice, setTotalPrice, allProductfromStrore } = useContext(mycontext)
     const [flatDiscountApplied, setFlastDiscountApplied] = useState(false)
     const [percentageOfferUsed, setPercentageOfferUsed] = useState(false)
     const [productsId, setProductsId] = useState([]);
@@ -25,14 +26,25 @@ const Cart = () => {
         const total = products.reduce((acc, curr) => {
             return acc + curr.price
         }, 0)
-
         setTotalPrice(total)
-
     }, [cart])
 
     useEffect(() => {
         getOffers()
+        gettingAllProducts()
     }, [])
+
+    const gettingAllProducts=async()=>{
+        try {
+          const  res=await getAllProducts()
+          setAllFromStroe(res.data.allProducts)
+
+     
+        } catch (error) {
+         console.log(error)
+        }
+      }
+
 
     const getOffers = async () => {
         try {
@@ -72,7 +84,11 @@ const Cart = () => {
             setCart(changeQuantityAndPrice)
         }
     }
-    const handleOfferSelection = (offer, product) => {
+
+    const handleOfferSelection = (offer, product,i) => {
+const offerUsed=selectedProduct.includes(i)
+setSelectedProduct([...selectedProduct,i])
+
 
         const newCart = [...cart]
         if (offer.offerName === "Product Bundle") {
@@ -80,7 +96,7 @@ const Cart = () => {
             navigate("/bundle-products")
         }
 
-        if (offer.details.discountAmount) {
+        if (offer.details.discountAmount && !offerUsed) {
             const addDiscountAmt = newCart.map((cartProduct, i) => {
                 if (cartProduct._id === product._id) {
                     const { price } = cartProduct
@@ -93,7 +109,7 @@ const Cart = () => {
 
             setCart(addDiscountAmt)
 
-        } else if (offer.details.discountPercentage) {
+        } else if (offer.details.discountPercentage && !offerUsed) {
             const addPercentage = cart.map((cartProduct, i) => {
                 if (cartProduct._id === product._id) {
                     const { price } = cartProduct;
@@ -164,8 +180,8 @@ const Cart = () => {
                                             offers
                                         </button>
                                         <ul className="dropdown-menu">
-                                            {allOffers.length > 0 ? allOffers.map((offer) => (
-                                                <li key={offer._id} onClick={() => handleOfferSelection(offer, cartProduct)} value={offer.details.discountAmount || offer.details.discountPercentage || offer.details.bundledProducts}>
+                                            {allOffers.length > 0 ? allOffers.map((offer) =>(
+                                                <li key={offer._id} onClick={() => handleOfferSelection(offer, cartProduct,i)} value={offer.details.discountAmount || offer.details.discountPercentage || offer.details.bundledProducts}>
                                                     <a className="dropdown-item" href="#">
                                                         {((offer.details.discountAmount && "flat discount" + offer.details.discountAmount) || (offer.details.bundledProducts.length > 0 && " one more product discount") || offer.details.discountPercentage && "flat" + offer.details.discountPercentage + "%" + "discount")}
                                                     </a>
