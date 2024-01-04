@@ -20,6 +20,7 @@ const [selectedProduct,setSelectedProduct]=useState([]);
     const removeFromTheCart = (index) => {
         const filteredCart = [...cart].filter((product, i) => i !== index)
         setCart(filteredCart)
+        localStorage.setItem("cart", JSON.stringify(filteredCart))
     }
     useEffect(() => {
         const products = [...cart]
